@@ -1,0 +1,91 @@
+<h1 style="text-align: center">Chỉnh Sửa Thông Tin Khách Hàng: <b class="text-danger">{{editForm.get('customerName').value}}</b></h1>
+<div class="container col-4 shadow-lg">
+  <form [formGroup]="editForm" (ngSubmit)="update(editForm.get('customerId').value)">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Tên khách hàng<span
+            style="color: red"> (*) </span></b>
+          <input class="form-control" type="text" formControlName="customerName" placeholder="Nhập tên khách hàng">
+          <p style="color: red"
+             *ngIf="editForm.controls.customerName.hasError('required') && editForm.controls.customerName.touched">
+            Không được bỏ trống.</p>
+          <p style="color: red"
+             *ngIf="editForm.controls.customerName.hasError('pattern') && ('minlength') && editForm.controls.customerName.touched">
+            Nhập đúng họ tên và nhiều hơn 2 kí tự (ví dụ : Nguyễn Văn A )</p>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Loại khách hàng<span
+            style="color: red"> (*) </span></b>
+          <select class="form-control" formControlName="type" [compareWith]="equals">
+            <option value="">---Vui lòng chọn---</option>
+            <option *ngFor="let type of types" [ngValue]="type">{{type.type}}</option>
+          </select>
+          <p style="color: red"
+             *ngIf="editForm.controls.type.hasError('required') && editForm.controls.type.touched">
+            Vui lòng không để trống</p>
+          <span class="select-arrow"></span>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Email
+            <span
+              style="color: red"> (*) </span></b>
+          <input class="form-control" type="text" placeholder="Nhập email" formControlName="email">
+          <p style="color: red"
+             *ngIf="editForm.controls.email.hasError('required') && editForm.controls.email.touched">
+            Không được bỏ trống.</p>
+          <p style="color: red"
+             *ngIf="editForm.controls.email.hasError('email') && editForm.controls.email.touched">
+            Nhập đúng định dạng email.</p>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Điện thoại <span
+            style="color: red"> (*) </span></b>
+          <input class="form-control" type="text" formControlName="phone"
+                 placeholder="Nhập số điện thoại">
+          <p style="color: red"
+             *ngIf="editForm.controls.phone.hasError('required') && editForm.controls.phone.touched">
+            Không được bỏ trống.</p>
+          <p style="color: red"
+             *ngIf="editForm.controls.phone.hasError('pattern') && editForm.controls.phone.touched">
+            Số điện thoại phải đúng định dạng gồm 10 số, bắt đầu từ 0.</p>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Ngày sinh<span
+            style="color: red"> (*) </span></b>
+          <input class="form-control" type="date" formControlName="dateOfBirth">
+          <p style="color: red"
+             *ngIf="editForm.controls.dateOfBirth.hasError('required') && editForm.controls.dateOfBirth.touched">
+            Không được bỏ trống.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <div>
+      </div>
+      <div class="row">
+        <div class="col-lg-10"></div>
+        <div>
+          <button routerLink="/list" class="btn btn-secondary mx-2">
+            <i class="fa fa-undo" aria-hidden="true"></i> Trở về
+          </button>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-success mx-2 "><i class="fa-solid fa-circle-plus"></i> Cập nhật</button>
+        </div>
+      </div>
+    </div>
+    <br>
+  </form>
+</div>

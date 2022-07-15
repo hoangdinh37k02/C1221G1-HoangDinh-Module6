@@ -1,0 +1,125 @@
+<h1 style="text-align: center" class="p-2">Thêm Mới Tour</h1> <br>
+<div class="container col-4 shadow-lg">
+  <form [formGroup]="createForm" (ngSubmit)="create()">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Tên Tour<span
+            style="color: red"> (*) </span></b>
+          <input class="form-control" type="text" formControlName="tenTour"
+                 placeholder="Nhập tên tour">
+          <p style="color: red"
+             *ngIf="createForm.controls.tenTour.hasError('required') && createForm.controls.tenTour.touched">
+            Vui lòng không được bỏ trống.</p>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Loại Tour<span
+            style="color: red"> (*) </span></b>
+          <select class="form-control" formControlName="loaiTour">
+            <option value="">---Vui lòng chọn---</option>
+            <option *ngFor="let loai of loaiTour" [ngValue]="loai">{{loai.tenTour}}</option>
+          </select>
+          <p style="color: red"
+             *ngIf="createForm.controls.loaiTour.hasError('required') && createForm.controls.loaiTour.touched">
+            Vui lòng không được bỏ trống.</p>
+          <span class="select-arrow"></span>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Phạm Vi<span
+            style="color: red"> (*) </span></b>
+          <select class="form-control" formControlName="phamVi">
+            <option value="">---Vui lòng chọn---</option>
+            <option *ngFor="let loai of phamVi" [ngValue]="loai">{{loai.tenPhamVi}}</option>
+          </select>
+          <p style="color: red"
+             *ngIf="createForm.controls.phamVi.hasError('required') && createForm.controls.phamVi.touched">
+            Vui lòng không được bỏ trống.</p>
+          <span class="select-arrow"></span>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Địa Điểm
+            <span
+              style="color: red"> (*) </span></b>
+          <input class="form-control" type="text" placeholder="Nhập địa điểm" formControlName="diaDiem">
+          <p style="color: red"
+             *ngIf="createForm.controls.diaDiem.hasError('required') && createForm.controls.diaDiem.touched">
+            Vui lòng không được bỏ trống.</p>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Ngày Khởi Hành<span
+            style="color: red"> (*) </span></b>
+          <input class="form-control" type="date" formControlName="ngayKhoiHanh">
+          <p style="color: red"
+             *ngIf="createForm.controls.ngayKhoiHanh.hasError('required') && createForm.controls.ngayKhoiHanh.touched">
+            Vui lòng không được bỏ trống.</p>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Ngày Về<span
+            style="color: red"> (*) </span></b>
+          <input class="form-control" type="date" formControlName="ngayVe">
+          <p style="color: red"
+             *ngIf="createForm.controls.ngayVe.hasError('required') && createForm.controls.ngayVe.touched">
+            Vui lòng không được bỏ trống.</p>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Ngày Kết Thúc Đăng Kí<span
+            style="color: red"> (*) </span></b>
+          <input class="form-control" type="date" formControlName="ngayKTDK">
+          <p style="color: red"
+             *ngIf="createForm.controls.ngayKTDK.hasError('required') && createForm.controls.ngayKTDK.touched">
+            Vui lòng không được bỏ trống.</p>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Số Người Tối Đa<span
+            style="color: red"> (*) </span></b>
+          <input class="form-control" type="number" formControlName="soNguoiToiDa">
+          <p style="color: red"
+             *ngIf="createForm.controls.soNguoiToiDa.hasError('required') && createForm.controls.soNguoiToiDa.touched">
+            Vui lòng không được bỏ trống.</p>
+          <p style="color: red"
+             *ngIf="createForm.controls.soNguoiToiDa.hasError('maxLength') && createForm.controls.soNguoiToiDa.touched">
+            Số người tối đa là 50.</p>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <b class="title" class="form-label">Chi Phí</b>
+          <input class="form-control" type="number" formControlName="chiPhi">
+        </div>
+        <b><span style="color: red"> (*) </span>: Bắt buộc nhập dữ liệu</b>
+      </div>
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-lg-6"></div>
+
+
+
+          <div>
+            <button type="submit" class="btn btn-success mx-4 "><i class="fa-solid fa-circle-plus"></i> Thêm</button>
+          </div>
+          <div>
+            <button routerLink="/list" class="btn btn-secondary mx-2">
+              <i class="fa fa-undo" aria-hidden="true"></i> Trở về
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div style="height: 10vh"></div>
